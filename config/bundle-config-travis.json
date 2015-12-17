@@ -1,0 +1,19 @@
+{
+   "entryPoints":
+   [
+      {
+         "inMemoryBuild": true,
+         "formats": ["cjs"],
+         "mangle": false,
+         "minify": false,
+         "src": "src/MultiStorage.js",
+         "extraConfig":
+         {
+            "meta":
+            {
+               "src/MultiStorage.js": { "format": "cjs" }
+            }
+         }
+      }
+   ]
+}
