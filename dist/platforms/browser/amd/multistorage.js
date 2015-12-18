@@ -2229,13 +2229,12 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
                   var mainKey = this.mainKey;
                   var storage = this._params.storage;
 
-                  var store = serializer.parse(storage[mainKey]);
-
-                  if (typeof store !== 'undefined') {
+                  var storeJSON = storage.getItem(mainKey);
+                  if (typeof storeJSON === 'string') {
+                     var store = serializer.parse(storeJSON);
                      delete store[key];
                      storage[mainKey] = serializer.stringify(store);
                   }
-
                   return _Promise.resolve(true);
                }
             }, {
@@ -2278,14 +2277,8 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
                   var serializer = this.serializer;
                   var storage = this._params.storage;
 
-                  var store = undefined;
-
                   var storeJSON = storage.getItem(mainKey);
-                  if (typeof storeJSON === 'string') {
-                     store = serializer.parse(storeJSON);
-                  } else {
-                     store = {};
-                  }
+                  var store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
 
                   store[key] = value;
 
