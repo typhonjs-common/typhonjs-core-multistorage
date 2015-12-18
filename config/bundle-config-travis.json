@@ -7,6 +7,14 @@
          "mangle": false,
          "minify": false,
          "src": "src/platforms/browser/MultiStorage.js",
+      },
+
+      {
+         "inMemoryBuild": true,
+         "formats": ["cjs"],
+         "mangle": false,
+         "minify": false,
+         "src": "src/platforms/node/MultiStorage.js",
       }
    ]
 }

@@ -1,7 +1,9 @@
+import LocalStorage from './LocalStorage.js';
+
 'use strict';
 
 /**
- * Provides short or long term storage via Window.localStorage or Window.sessionStorage.
+ * Provides long or short term storage via node-localstorage or an in memory Map.
  */
 export default class MultiStorage
 {
@@ -24,7 +26,9 @@ export default class MultiStorage
    get storageType() { return this._params.storageType; }
 
    /**
-    * Initializes MultiStorage. First parameter may be an optional object literal hash.
+    * Initializes MultiStorage. First parameter may be an optional object literal hash. When using an object hash
+    * an additional parameter `filePath` may specify a file path for local storage. By default the `mainKey` is
+    * used for the `filePath`.
     *
     * @param {string}   mainKey - Main key to store items for this MultiStorage instance.
     * @param {boolean}  session - Boolean to indicate session (short term) storage; default is long term (localStorage).
@@ -39,30 +43,33 @@ export default class MultiStorage
          options.mainKey = mainKey.mainKey || 'multistorage';
          options.session = mainKey.session || false;
          options.serializer = mainKey.serializer;
+         options.filePath = mainKey.filePath || `./${mainKey.mainKey}`;
 
          this._params =
          {
+            filePath: options.filePath,
             mainKey: options.mainKey,
             storageType: options.session ? 'sessionStorage' : 'localStorage',
-            serializer: options.serializer
+            serializer: options.serializer,
+            storage: session ? new InMemoryStorage() : new LocalStorage(options.filePath)
          };
       }
       else
       {
          this._params =
          {
+            filePath: `./${mainKey}`,
             mainKey,
             storageType: session ? 'sessionStorage' : 'localStorage',
-            serializer
+            serializer,
+            storage: session ? new InMemoryStorage() : new LocalStorage(`./${mainKey}`)
          };
       }
 
-      if (!s_STORAGE_AVAILABLE(this.storageType))
+      if (!s_STORAGE_AVAILABLE(this._params.storage))
       {
          throw new Error(`Storage type '${this.storageType} not available.`);
       }
-
-      this._params.storage = window[this._params.storageType];
    }
 
    /**
@@ -89,12 +96,12 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
-      let storeJSON = storage.getItem(mainKey);
+      const storeJSON = storage.getItem(mainKey);
       if (typeof storeJSON === 'string')
       {
          const store = serializer.parse(storeJSON);
          delete store[key];
-         storage[mainKey] = serializer.stringify(store);
+         storage.setItem(mainKey, serializer.stringify(store));
       }
       return Promise.resolve(true);
    }
@@ -113,7 +120,7 @@ export default class MultiStorage
 
       let returnValue = undefined;
 
-      let storeJSON = storage.getItem(mainKey);
+      const storeJSON = storage.getItem(mainKey);
       if (typeof storeJSON === 'string')
       {
          const store = serializer.parse(storeJSON);
@@ -136,7 +143,7 @@ export default class MultiStorage
 
       let returnValue = undefined;
 
-      let storeJSON = storage.getItem(mainKey);
+      const storeJSON = storage.getItem(mainKey);
       if (typeof storeJSON === 'string')
       {
          returnValue = serializer.parse(storeJSON);
@@ -158,14 +165,21 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
-      let storeJSON = storage.getItem(mainKey);
-      let store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
-
+      const storeJSON = storage.getItem(mainKey);
+      const store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
+      serializer.stringify(value)
       store[key] = value;
 
-      storage.setItem(mainKey, serializer.stringify(store));
-
-      return Promise.resolve(true);
+      try
+      {
+         const jsonObject = serializer.stringify(store);
+         storage.setItem(mainKey, jsonObject);
+         return Promise.resolve(true);
+      }
+      catch (err)
+      {
+         return Promise.resolve(false);
+      }
    }
 
    /**
@@ -180,10 +194,29 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
-      storage.setItem(mainKey, serializer.stringify(store));
-
-      return Promise.resolve(true);
+      try
+      {
+         const jsonObject = serializer.stringify(store);
+         storage.setItem(mainKey, jsonObject);
+         return Promise.resolve(true);
+      }
+      catch (err)
+      {
+         return Promise.resolve(false);
+      }
    }
+}
+
+/**
+ * Provides a session / in memory shim for storage on Node.
+ */
+class InMemoryStorage
+{
+   constructor() { this._storage = new Map(); }
+   clear() { this._storage.clear(); }
+   getItem(key) { return this._storage.get(key); }
+   removeItem(key) { this._storage.delete(key); }
+   setItem(key, value) { this._storage.set(key, value); }
 }
 
 // Private internal methods -----------------------------------------------------------------------------------------
@@ -191,14 +224,14 @@ export default class MultiStorage
 /**
  * Tests if the storage mechanism is available.
  *
- * @param {string}   type - Storage type.
+ * @param {Object}   storage - Storage instance.
  * @returns {boolean}
  */
-const s_STORAGE_AVAILABLE = (type) =>
+const s_STORAGE_AVAILABLE = (storage) =>
 {
    try
    {
-      const storage = window[type], x = '__storage_test__';
+      const x = '__storage_test__';
       storage.setItem(x, x);
       storage.removeItem(x);
       return true;

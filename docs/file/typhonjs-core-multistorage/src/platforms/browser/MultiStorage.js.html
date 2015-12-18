@@ -1,4 +1,45 @@
-'use strict';
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../">
+  <title data-ice="title">typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js | typhonjs-core-multistorage API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/typhonjs/typhonjs-core-multistorage/typhonjs-core-multistorage.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">src/platforms/browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html">MultiStorage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">src/platforms/node</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html">MultiStorage</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 /**
  * Provides short or long term storage via Window.localStorage or Window.sessionStorage.
@@ -30,20 +71,20 @@ export default class MultiStorage
     * @param {boolean}  session - Boolean to indicate session (short term) storage; default is long term (localStorage).
     * @param {Object}   serializer - Instance that conforms to JSON serialization.
     */
-   constructor(mainKey = 'multistorage', session = false, serializer = JSON)
+   constructor(mainKey = &apos;multistorage&apos;, session = false, serializer = JSON)
    {
-      if (typeof mainKey === 'object')
+      if (typeof mainKey === &apos;object&apos;)
       {
          const options = {};
 
-         options.mainKey = mainKey.mainKey || 'multistorage';
+         options.mainKey = mainKey.mainKey || &apos;multistorage&apos;;
          options.session = mainKey.session || false;
          options.serializer = mainKey.serializer;
 
          this._params =
          {
             mainKey: options.mainKey,
-            storageType: options.session ? 'sessionStorage' : 'localStorage',
+            storageType: options.session ? &apos;sessionStorage&apos; : &apos;localStorage&apos;,
             serializer: options.serializer
          };
       }
@@ -52,14 +93,14 @@ export default class MultiStorage
          this._params =
          {
             mainKey,
-            storageType: session ? 'sessionStorage' : 'localStorage',
+            storageType: session ? &apos;sessionStorage&apos; : &apos;localStorage&apos;,
             serializer
          };
       }
 
       if (!s_STORAGE_AVAILABLE(this.storageType))
       {
-         throw new Error(`Storage type '${this.storageType} not available.`);
+         throw new Error(`Storage type &apos;${this.storageType} not available.`);
       }
 
       this._params.storage = window[this._params.storageType];
@@ -68,7 +109,7 @@ export default class MultiStorage
    /**
     * Clears all entries associated with `mainKey`.
     *
-    * @returns {Promise.<boolean>}
+    * @returns {Promise.&lt;boolean&gt;}
     */
    clear()
    {
@@ -81,7 +122,7 @@ export default class MultiStorage
     * Deletes entry filed under `key` in `mainKey` hash.
     *
     * @param {string}   key - Key to delete.
-    * @returns {Promise.<boolean>}
+    * @returns {Promise.&lt;boolean&gt;}
     */
    delete(key)
    {
@@ -90,7 +131,7 @@ export default class MultiStorage
       const storage = this._params.storage;
 
       let storeJSON = storage.getItem(mainKey);
-      if (typeof storeJSON === 'string')
+      if (typeof storeJSON === &apos;string&apos;)
       {
          const store = serializer.parse(storeJSON);
          delete store[key];
@@ -103,7 +144,7 @@ export default class MultiStorage
     * Returns the value associated with `key` in `mainKey` hash.
     *
     * @param {string}   key - Key to retrieve a value for.
-    * @returns {Promise.<undefined>}
+    * @returns {Promise.&lt;undefined&gt;}
     */
    get(key)
    {
@@ -114,7 +155,7 @@ export default class MultiStorage
       let returnValue = undefined;
 
       let storeJSON = storage.getItem(mainKey);
-      if (typeof storeJSON === 'string')
+      if (typeof storeJSON === &apos;string&apos;)
       {
          const store = serializer.parse(storeJSON);
          returnValue = store[key];
@@ -126,7 +167,7 @@ export default class MultiStorage
    /**
     * Returns the entire JSON object stored by `mainKey`.
     *
-    * @returns {Promise.<undefined>}
+    * @returns {Promise.&lt;undefined&gt;}
     */
    getStore()
    {
@@ -137,7 +178,7 @@ export default class MultiStorage
       let returnValue = undefined;
 
       let storeJSON = storage.getItem(mainKey);
-      if (typeof storeJSON === 'string')
+      if (typeof storeJSON === &apos;string&apos;)
       {
          returnValue = serializer.parse(storeJSON);
       }
@@ -150,7 +191,7 @@ export default class MultiStorage
     *
     * @param {string}   key - Key for indexed storage.
     * @param {*}        value - Any valid value to serialize.
-    * @returns {Promise.<boolean>}
+    * @returns {Promise.&lt;boolean&gt;}
     */
    set(key, value)
    {
@@ -159,7 +200,7 @@ export default class MultiStorage
       const storage = this._params.storage;
 
       let storeJSON = storage.getItem(mainKey);
-      let store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
+      let store = typeof storeJSON === &apos;string&apos; ? serializer.parse(storeJSON) : {};
 
       store[key] = value;
 
@@ -172,7 +213,7 @@ export default class MultiStorage
     * Sets an entire object to be serialized under `mainKey`.
     *
     * @param {*}  store - entire object store.
-    * @returns {Promise.<boolean>}
+    * @returns {Promise.&lt;boolean&gt;}
     */
    setStore(store)
    {
@@ -194,11 +235,11 @@ export default class MultiStorage
  * @param {string}   type - Storage type.
  * @returns {boolean}
  */
-const s_STORAGE_AVAILABLE = (type) =>
+const s_STORAGE_AVAILABLE = (type) =&gt;
 {
    try
    {
-      const storage = window[type], x = '__storage_test__';
+      const storage = window[type], x = &apos;__storage_test__&apos;;
       storage.setItem(x, x);
       storage.removeItem(x);
       return true;
@@ -207,4 +248,20 @@ const s_STORAGE_AVAILABLE = (type) =>
    {
       return false;
    }
-};
+};</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -5,4 +5,7 @@ before_script:
   - npm install -g gulp
   - npm install -g jspm
   - jspm install
-script: gulp test-basic --travis
+script:
+  - gulp eslint
+  - gulp jspm-bundle
+  - npm run test-bundle-node

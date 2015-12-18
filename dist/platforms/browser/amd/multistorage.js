@@ -2208,7 +2208,7 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
                };
 
                if (!s_STORAGE_AVAILABLE(this.storageType)) {
-                  throw new Error('Storage type \'' + this.mainKey + ' not available.');
+                  throw new Error('Storage type \'' + this.storageType + ' not available.');
                }
 
                this._params.storage = window[this._params.storageType];
