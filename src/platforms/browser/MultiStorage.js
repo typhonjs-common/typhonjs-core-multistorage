@@ -89,7 +89,7 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
-      let storeJSON = storage.getItem(mainKey);
+      const storeJSON = storage.getItem(mainKey);
       if (typeof storeJSON === 'string')
       {
          const store = serializer.parse(storeJSON);
@@ -113,7 +113,7 @@ export default class MultiStorage
 
       let returnValue = undefined;
 
-      let storeJSON = storage.getItem(mainKey);
+      const storeJSON = storage.getItem(mainKey);
       if (typeof storeJSON === 'string')
       {
          const store = serializer.parse(storeJSON);
@@ -136,7 +136,7 @@ export default class MultiStorage
 
       let returnValue = undefined;
 
-      let storeJSON = storage.getItem(mainKey);
+      const storeJSON = storage.getItem(mainKey);
       if (typeof storeJSON === 'string')
       {
          returnValue = serializer.parse(storeJSON);
@@ -158,8 +158,8 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
-      let storeJSON = storage.getItem(mainKey);
-      let store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
+      const storeJSON = storage.getItem(mainKey);
+      const store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
 
       store[key] = value;
 

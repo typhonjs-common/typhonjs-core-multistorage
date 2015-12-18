@@ -6,7 +6,7 @@
 
 'use strict';
 
-/* eslint-disable no-var */
+/* eslint-disable */
 
 var MultiStorage;
 

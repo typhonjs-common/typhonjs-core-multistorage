@@ -167,7 +167,7 @@ export default class MultiStorage
 
       const storeJSON = storage.getItem(mainKey);
       const store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
-      serializer.stringify(value)
+      serializer.stringify(value);
       store[key] = value;
 
       try
