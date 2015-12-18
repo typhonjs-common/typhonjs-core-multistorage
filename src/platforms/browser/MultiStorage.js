@@ -36,14 +36,13 @@ export default class MultiStorage
       const mainKey = this.mainKey;
       const storage = this._params.storage;
 
-      let store = serializer.parse(storage[mainKey]);
-
-      if (typeof store !== 'undefined')
+      let storeJSON = storage.getItem(mainKey);
+      if (typeof storeJSON === 'string')
       {
+         const store = serializer.parse(storeJSON);
          delete store[key];
          storage[mainKey] = serializer.stringify(store);
       }
-
       return Promise.resolve(true);
    }
 
@@ -88,17 +87,8 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
-      let store;
-
       let storeJSON = storage.getItem(mainKey);
-      if (typeof storeJSON === 'string')
-      {
-         store = serializer.parse(storeJSON);
-      }
-      else
-      {
-         store = {};
-      }
+      let store = typeof storeJSON === 'string' ? serializer.parse(storeJSON) : {};
 
       store[key] = value;
 
