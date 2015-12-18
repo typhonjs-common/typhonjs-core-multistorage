@@ -7,5 +7,4 @@ before_script:
   - jspm install
 script:
   - gulp eslint
-  - gulp jspm-bundle
   - TRAVIS=1 npm run test-bundle-node
