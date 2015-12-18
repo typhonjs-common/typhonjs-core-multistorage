@@ -17,6 +17,7 @@
     }
   },
   "devDependencies": {
+    "codecov.io": "^0.1.6",
     "fs-extra": "^0.26.2",
     "gulp": "^3.9.0",
     "isparta": "^4.0.0",
