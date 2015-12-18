@@ -2,19 +2,87 @@
    "entryPoints":
    [
       {
-         "inMemoryBuild": true,
-         "formats": ["cjs"],
+         "destBaseDir": "./dist/platforms/browser",
+         "destFilename": "multistorage.js",
+         "formats": ["amd", "cjs"],
          "mangle": false,
          "minify": false,
-         "src": "src/platforms/browser/MultiStorage.js",
+         "src": "src/platforms/browser/MultiStorage.js"
       },
 
       {
-         "inMemoryBuild": true,
+         "destBaseDir": "./dist/platforms/browser",
+         "destFilename": "multistorage.min.js",
+         "formats": ["amd", "cjs"],
+         "mangle": true,
+         "minify": true,
+         "src": "src/platforms/browser/MultiStorage.js"
+      },
+
+      {
+         "destBaseDir": "./dist/platforms/node",
+         "destFilename": "multistorage.js",
          "formats": ["cjs"],
          "mangle": false,
          "minify": false,
          "src": "src/platforms/node/MultiStorage.js",
+         "extraConfig":
+         {
+            "meta":
+            {
+               "src/platforms/node/LocalStorage.js": { "format": "cjs" }
+            }
+         }
+      },
+
+      {
+         "destBaseDir": "./dist/platforms/node",
+         "destFilename": "multistorage.min.js",
+         "formats": ["cjs"],
+         "mangle": true,
+         "minify": true,
+         "src": "src/platforms/node/MultiStorage.js",
+         "extraConfig":
+         {
+            "meta":
+            {
+               "src/platforms/node/LocalStorage.js": { "format": "cjs" }
+            }
+         }
+      },
+
+      {
+         "destBaseDir": "./dist/platforms/universal",
+         "destFilename": "multistorage.js",
+         "formats": ["amd", "cjs"],
+         "mangle": false,
+         "minify": false,
+         "src": "src/platforms/universal/MultiStorage.js",
+         "extraConfig":
+         {
+            "meta":
+            {
+               "src/platforms/node/LocalStorage.js": { "format": "cjs" },
+               "src/platforms/universal/MultiStorage.js": { "format": "cjs" }
+            }
+         }
+      },
+
+      {
+         "destBaseDir": "./dist/platforms/universal",
+         "destFilename": "multistorage.min.js",
+         "formats": ["amd", "cjs"],
+         "mangle": true,
+         "minify": true,
+         "src": "src/platforms/universal/MultiStorage.js",
+         "extraConfig":
+         {
+            "meta":
+            {
+               "src/platforms/node/LocalStorage.js": { "format": "cjs" },
+               "src/platforms/universal/MultiStorage.js": { "format": "cjs" }
+            }
+         }
       }
    ]
 }
