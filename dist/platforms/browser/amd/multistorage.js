@@ -2171,27 +2171,51 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
          _Promise = _3['default'];
       }],
       execute: function () {
+         'use strict';
+
          /**
           * Provides short or long term storage via Window.localStorage or Window.sessionStorage.
           */
-         'use strict';
 
          MultiStorage = (function () {
             _createClass(MultiStorage, [{
                key: 'mainKey',
+
+               /**
+                * Gets the main key.
+                * @returns {*}
+                */
                get: function get() {
                   return this._params.mainKey;
                }
+
+               /**
+                * Gets the serializer.
+                * @returns {*}
+                */
             }, {
                key: 'serializer',
                get: function get() {
                   return this._params.serializer;
                }
+
+               /**
+                * Get storage type.
+                * @returns {*}
+                */
             }, {
                key: 'storageType',
                get: function get() {
                   return this._params.storageType;
                }
+
+               /**
+                * Initializes MultiStorage. First parameter may be an optional object literal hash.
+                *
+                * @param {string}   mainKey - Main key to store items for this MultiStorage instance.
+                * @param {boolean}  session - Boolean to indicate session (short term) storage; default is long term (localStorage).
+                * @param {Object}   serializer - Instance that conforms to JSON serialization.
+                */
             }]);
 
             function MultiStorage() {
@@ -2201,11 +2225,25 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
 
                _classCallCheck(this, MultiStorage);
 
-               this._params = {
-                  mainKey: mainKey,
-                  storageType: session ? 'sessionStorage' : 'localStorage',
-                  serializer: serializer
-               };
+               if (typeof mainKey === 'object') {
+                  var options = {};
+
+                  options.mainKey = mainKey.mainKey || 'multistorage';
+                  options.session = mainKey.session || false;
+                  options.serializer = mainKey.serializer;
+
+                  this._params = {
+                     mainKey: options.mainKey,
+                     storageType: options.session ? 'sessionStorage' : 'localStorage',
+                     serializer: options.serializer
+                  };
+               } else {
+                  this._params = {
+                     mainKey: mainKey,
+                     storageType: session ? 'sessionStorage' : 'localStorage',
+                     serializer: serializer
+                  };
+               }
 
                if (!s_STORAGE_AVAILABLE(this.storageType)) {
                   throw new Error('Storage type \'' + this.storageType + ' not available.');
@@ -2216,6 +2254,19 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
 
             // Private internal methods -----------------------------------------------------------------------------------------
 
+            /**
+             * Tests if the storage mechanism is available.
+             *
+             * @param {string}   type - Storage type.
+             * @returns {boolean}
+             */
+
+            /**
+             * Clears all entries associated with `mainKey`.
+             *
+             * @returns {Promise.<boolean>}
+             */
+
             _createClass(MultiStorage, [{
                key: 'clear',
                value: function clear() {
@@ -2223,6 +2274,13 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
                   storage.removeItem(this.mainKey);
                   return _Promise.resolve(true);
                }
+
+               /**
+                * Deletes entry filed under `key` in `mainKey` hash.
+                *
+                * @param {string}   key - Key to delete.
+                * @returns {Promise.<boolean>}
+                */
             }, {
                key: 'delete',
                value: function _delete(key) {
@@ -2238,6 +2296,13 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
                   }
                   return _Promise.resolve(true);
                }
+
+               /**
+                * Returns the value associated with `key` in `mainKey` hash.
+                *
+                * @param {string}   key - Key to retrieve a value for.
+                * @returns {Promise.<undefined>}
+                */
             }, {
                key: 'get',
                value: function get(key) {
@@ -2255,6 +2320,12 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
 
                   return _Promise.resolve(returnValue);
                }
+
+               /**
+                * Returns the entire JSON object stored by `mainKey`.
+                *
+                * @returns {Promise.<undefined>}
+                */
             }, {
                key: 'getStore',
                value: function getStore() {
@@ -2271,6 +2342,14 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
 
                   return _Promise.resolve(returnValue);
                }
+
+               /**
+                * Sets a value by the give key in the `mainKey` hash.
+                *
+                * @param {string}   key - Key for indexed storage.
+                * @param {*}        value - Any valid value to serialize.
+                * @returns {Promise.<boolean>}
+                */
             }, {
                key: 'set',
                value: function set(key, value) {
@@ -2287,6 +2366,13 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
 
                   return _Promise.resolve(true);
                }
+
+               /**
+                * Sets an entire object to be serialized under `mainKey`.
+                *
+                * @param {*}  store - entire object store.
+                * @returns {Promise.<boolean>}
+                */
             }, {
                key: 'setStore',
                value: function setStore(store) {

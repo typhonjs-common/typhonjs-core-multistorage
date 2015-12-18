@@ -2,6 +2,7 @@
    "entryPoints":
    [
       {
+         "inMemoryBuild": false,
          "destBaseDir": "./dist/platforms/browser",
          "destFilename": "multistorage.js",
          "formats": ["amd", "cjs"],
@@ -11,6 +12,7 @@
       },
 
       {
+         "inMemoryBuild": false,
          "destBaseDir": "./dist/platforms/browser",
          "destFilename": "multistorage.min.js",
          "formats": ["amd", "cjs"],
@@ -20,6 +22,7 @@
       },
 
       {
+         "inMemoryBuild": false,
          "destBaseDir": "./dist/platforms/node",
          "destFilename": "multistorage.js",
          "formats": ["cjs"],
@@ -36,6 +39,7 @@
       },
 
       {
+         "inMemoryBuild": false,
          "destBaseDir": "./dist/platforms/node",
          "destFilename": "multistorage.min.js",
          "formats": ["cjs"],
@@ -52,6 +56,7 @@
       },
 
       {
+         "inMemoryBuild": false,
          "destBaseDir": "./dist/platforms/universal",
          "destFilename": "multistorage.js",
          "formats": ["amd", "cjs"],
@@ -69,6 +74,7 @@
       },
 
       {
+         "inMemoryBuild": false,
          "destBaseDir": "./dist/platforms/universal",
          "destFilename": "multistorage.min.js",
          "formats": ["amd", "cjs"],
