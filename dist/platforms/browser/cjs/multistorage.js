@@ -2227,6 +2227,7 @@ $__System.register('1', ['5', '6', '40'], function (_export) {
                key: 'delete',
                value: function _delete(key) {
                   var mainKey = this.mainKey;
+                  var serializer = this.serializer;
                   var storage = this._params.storage;
 
                   var storeJSON = storage.getItem(mainKey);

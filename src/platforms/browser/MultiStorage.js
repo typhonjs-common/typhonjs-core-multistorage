@@ -34,6 +34,7 @@ export default class MultiStorage
    delete(key)
    {
       const mainKey = this.mainKey;
+      const serializer = this.serializer;
       const storage = this._params.storage;
 
       let storeJSON = storage.getItem(mainKey);
