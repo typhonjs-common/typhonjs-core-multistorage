@@ -7,26 +7,16 @@
          "formats": ["amd", "cjs"],
          "mangle": false,
          "minify": false,
-         "src": "src/MultiStorage.js",
-         "extraConfig":
-         {
-            "map": { "pathPlatform": "platforms/browser" },
-            "meta": { "src/MultiStorage.js": { "format": "cjs" } }
-         }
+         "src": "src/platforms/browser/MultiStorage.js"
       },
 
       {
-         "destBaseDir": "./dist/platform/browser",
+         "destBaseDir": "./dist/platforms/browser",
          "destFilename": "multistorage.min.js",
          "formats": ["amd", "cjs"],
          "mangle": true,
          "minify": true,
-         "src": "src/MultiStorage.js",
-         "extraConfig":
-         {
-            "map": { "pathPlatform": "platforms/browser" },
-            "meta": { "src/MultiStorage.js": { "format": "cjs" } }
-         }
+         "src": "src/platforms/browser/MultiStorage.js"
       }
    ]
 }

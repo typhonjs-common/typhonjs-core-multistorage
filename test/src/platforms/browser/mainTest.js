@@ -1,6 +1,6 @@
 'use strict';
 
-import MultiStorage from 'src/Multistorage2.js';
+import MultiStorage from 'src/platforms/browser/Multistorage.js';
 
 const storage = new MultiStorage();
 
