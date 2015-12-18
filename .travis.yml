@@ -8,4 +8,4 @@ before_script:
 script:
   - gulp eslint
   - gulp jspm-bundle
-  - npm run test-bundle-node
+  - TRAVIS=1 npm run test-bundle-node
