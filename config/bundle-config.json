@@ -4,7 +4,7 @@
       {
          "destBaseDir": "./dist/platforms/browser",
          "destFilename": "multistorage.js",
-         "formats": ["amd", "cjs"],
+         "formats": ["amd", "cjs", "umd"],
          "mangle": false,
          "minify": false,
          "src": "src/platforms/browser/MultiStorage.js"
@@ -13,7 +13,7 @@
       {
          "destBaseDir": "./dist/platforms/browser",
          "destFilename": "multistorage.min.js",
-         "formats": ["amd", "cjs"],
+         "formats": ["amd", "cjs", "umd"],
          "mangle": true,
          "minify": true,
          "src": "src/platforms/browser/MultiStorage.js"
@@ -54,7 +54,7 @@
       {
          "destBaseDir": "./dist/platforms/universal",
          "destFilename": "multistorage.js",
-         "formats": ["amd", "cjs"],
+         "formats": ["amd", "cjs", "umd"],
          "mangle": false,
          "minify": false,
          "src": "src/platforms/universal/MultiStorage.js",
@@ -71,7 +71,7 @@
       {
          "destBaseDir": "./dist/platforms/universal",
          "destFilename": "multistorage.min.js",
-         "formats": ["amd", "cjs"],
+         "formats": ["amd", "cjs", "umd"],
          "mangle": true,
          "minify": true,
          "src": "src/platforms/universal/MultiStorage.js",
