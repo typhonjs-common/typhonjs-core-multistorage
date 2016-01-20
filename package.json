@@ -18,10 +18,10 @@
   },
   "devDependencies": {
     "codecov.io": "^0.1.6",
-    "fs-extra": "^0.26.2",
+    "fs-extra": "^0.26.4",
     "gulp": "^3.9.0",
     "isparta": "^4.0.0",
-    "jspm": "^0.16.23",
+    "jspm": "^0.16.24",
     "mocha": "^2.3.4",
     "power-assert": "^1.2.0",
     "typhonjs-config-eslint": "^0.2.1",
