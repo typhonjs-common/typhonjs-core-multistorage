@@ -2,7 +2,7 @@
 
 var assert = require('power-assert');
 
-var MultiStorage = require('../../../../dist/platforms/universal/cjs/multistorage.js').default;
+var MultiStorage = require('../../../../dist/platforms/universal/cjs/typhonjs-core-multistorage.js').default;
 
 var currentTime = new Date();
 
