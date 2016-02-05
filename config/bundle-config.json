@@ -3,7 +3,7 @@
    [
       {
          "destBaseDir": "./dist/platforms/browser",
-         "destFilename": "multistorage.js",
+         "destFilename": "typhonjs-core-multistorage.js",
          "formats": ["amd", "cjs", "umd"],
          "mangle": false,
          "minify": false,
@@ -16,7 +16,7 @@
 
       {
          "destBaseDir": "./dist/platforms/browser",
-         "destFilename": "multistorage.min.js",
+         "destFilename": "typhonjs-core-multistorage.min.js",
          "formats": ["amd", "cjs", "umd"],
          "mangle": true,
          "minify": true,
@@ -29,7 +29,7 @@
 
       {
          "destBaseDir": "./dist/platforms/node",
-         "destFilename": "multistorage.js",
+         "destFilename": "typhonjs-core-multistorage.js",
          "formats": ["cjs"],
          "mangle": false,
          "minify": false,
@@ -45,7 +45,7 @@
 
       {
          "destBaseDir": "./dist/platforms/node",
-         "destFilename": "multistorage.min.js",
+         "destFilename": "typhonjs-core-multistorage.min.js",
          "formats": ["cjs"],
          "mangle": true,
          "minify": true,
@@ -61,7 +61,7 @@
 
       {
          "destBaseDir": "./dist/platforms/universal",
-         "destFilename": "multistorage.js",
+         "destFilename": "typhonjs-core-multistorage.js",
          "formats": ["amd", "cjs", "umd"],
          "mangle": false,
          "minify": false,
@@ -82,7 +82,7 @@
 
       {
          "destBaseDir": "./dist/platforms/universal",
-         "destFilename": "multistorage.min.js",
+         "destFilename": "typhonjs-core-multistorage.min.js",
          "formats": ["amd", "cjs", "umd"],
          "mangle": true,
          "minify": true,
