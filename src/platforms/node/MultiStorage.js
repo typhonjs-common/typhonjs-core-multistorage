@@ -79,9 +79,19 @@ export default class MultiStorage
     */
    clear()
    {
+      return Promise.resolve(this.clearSync());
+   }
+
+   /**
+    * Clears all entries associated with `mainKey`.
+    *
+    * @returns {boolean}
+    */
+   clearSync()
+   {
       const storage = this._params.storage;
       storage.removeItem(this.mainKey);
-      return Promise.resolve(true);
+      return true;
    }
 
    /**
@@ -91,6 +101,17 @@ export default class MultiStorage
     * @returns {Promise.<boolean>}
     */
    delete(key)
+   {
+      return Promise.resolve(this.deleteSync(key));
+   }
+
+   /**
+    * Deletes entry filed under `key` in `mainKey` hash.
+    *
+    * @param {string}   key - Key to delete.
+    * @returns {boolean}
+    */
+   deleteSync(key)
    {
       const mainKey = this.mainKey;
       const serializer = this.serializer;
@@ -103,7 +124,7 @@ export default class MultiStorage
          delete store[key];
          storage.setItem(mainKey, serializer.stringify(store));
       }
-      return Promise.resolve(true);
+      return true;
    }
 
    /**
@@ -113,6 +134,17 @@ export default class MultiStorage
     * @returns {Promise.<undefined>}
     */
    get(key)
+   {
+      return Promise.resolve(this.getSync(key));
+   }
+
+   /**
+    * Returns the value associated with `key` in `mainKey` hash.
+    *
+    * @param {string}   key - Key to retrieve a value for.
+    * @returns {*}
+    */
+   getSync(key)
    {
       const mainKey = this.mainKey;
       const serializer = this.serializer;
@@ -127,7 +159,7 @@ export default class MultiStorage
          returnValue = store[key];
       }
 
-      return Promise.resolve(returnValue);
+      return returnValue;
    }
 
    /**
@@ -136,6 +168,16 @@ export default class MultiStorage
     * @returns {Promise.<undefined>}
     */
    getStore()
+   {
+      return Promise.resolve(this.getStoreSync());
+   }
+
+   /**
+    * Returns the entire JSON object stored by `mainKey`.
+    *
+    * @returns {*}
+    */
+   getStoreSync()
    {
       const mainKey = this.mainKey;
       const serializer = this.serializer;
@@ -161,6 +203,18 @@ export default class MultiStorage
     */
    set(key, value)
    {
+      return Promise.resolve(this.setSync(key, value));
+   }
+
+   /**
+    * Sets a value by the give key in the `mainKey` hash.
+    *
+    * @param {string}   key - Key for indexed storage.
+    * @param {*}        value - Any valid value to serialize.
+    * @returns {boolean}
+    */
+   setSync(key, value)
+   {
       const mainKey = this.mainKey;
       const serializer = this.serializer;
       const storage = this._params.storage;
@@ -174,11 +228,11 @@ export default class MultiStorage
       {
          const jsonObject = serializer.stringify(store);
          storage.setItem(mainKey, jsonObject);
-         return Promise.resolve(true);
+         return true;
       }
       catch (err)
       {
-         return Promise.resolve(false);
+         return false;
       }
    }
 
@@ -190,6 +244,17 @@ export default class MultiStorage
     */
    setStore(store)
    {
+      return Promise.resolve(this.setStoreSync(store));
+   }
+
+   /**
+    * Sets an entire object to be serialized under `mainKey`.
+    *
+    * @param {*}  store - entire object store.
+    * @returns {boolean}
+    */
+   setStoreSync(store)
+   {
       const mainKey = this.mainKey;
       const serializer = this.serializer;
       const storage = this._params.storage;
@@ -198,11 +263,11 @@ export default class MultiStorage
       {
          const jsonObject = serializer.stringify(store);
          storage.setItem(mainKey, jsonObject);
-         return Promise.resolve(true);
+         return true;
       }
       catch (err)
       {
-         return Promise.resolve(false);
+         return false;
       }
    }
 }
