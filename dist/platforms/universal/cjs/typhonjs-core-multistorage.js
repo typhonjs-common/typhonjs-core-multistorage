@@ -114,9 +114,20 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
             _createClass(MultiStorage, [{
                key: 'clear',
                value: function clear() {
+                  return _Promise.resolve(this.clearSync());
+               }
+
+               /**
+                * Clears all entries associated with `mainKey`.
+                *
+                * @returns {boolean}
+                */
+            }, {
+               key: 'clearSync',
+               value: function clearSync() {
                   var storage = this._params.storage;
                   storage.removeItem(this.mainKey);
-                  return _Promise.resolve(true);
+                  return true;
                }
 
                /**
@@ -128,6 +139,18 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
             }, {
                key: 'delete',
                value: function _delete(key) {
+                  return _Promise.resolve(this.deleteSync(key));
+               }
+
+               /**
+                * Deletes entry filed under `key` in `mainKey` hash.
+                *
+                * @param {string}   key - Key to delete.
+                * @returns {boolean}
+                */
+            }, {
+               key: 'deleteSync',
+               value: function deleteSync(key) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -138,18 +161,30 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
                      delete store[key];
                      storage[mainKey] = serializer.stringify(store);
                   }
-                  return _Promise.resolve(true);
+                  return true;
                }
 
                /**
                 * Returns the value associated with `key` in `mainKey` hash.
                 *
                 * @param {string}   key - Key to retrieve a value for.
-                * @returns {Promise.<undefined>}
+                * @returns {Promise.<*>}
                 */
             }, {
                key: 'get',
                value: function get(key) {
+                  return _Promise.resolve(this.getSync(key));
+               }
+
+               /**
+                * Returns the value associated with `key` in `mainKey` hash.
+                *
+                * @param {string}   key - Key to retrieve a value for.
+                * @returns {*}
+                */
+            }, {
+               key: 'getSync',
+               value: function getSync(key) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -162,7 +197,7 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
                      returnValue = store[key];
                   }
 
-                  return _Promise.resolve(returnValue);
+                  return returnValue;
                }
 
                /**
@@ -173,6 +208,17 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
             }, {
                key: 'getStore',
                value: function getStore() {
+                  return _Promise.resolve(this.getStoreSync());
+               }
+
+               /**
+                * Returns the entire JSON object stored by `mainKey`.
+                *
+                * @returns {*}
+                */
+            }, {
+               key: 'getStoreSync',
+               value: function getStoreSync() {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -184,7 +230,7 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
                      returnValue = serializer.parse(storeJSON);
                   }
 
-                  return _Promise.resolve(returnValue);
+                  return returnValue;
                }
 
                /**
@@ -197,6 +243,19 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
             }, {
                key: 'set',
                value: function set(key, value) {
+                  return _Promise.resolve(this.setSync(key, value));
+               }
+
+               /**
+                * Sets a value by the give key in the `mainKey` hash.
+                *
+                * @param {string}   key - Key for indexed storage.
+                * @param {*}        value - Any valid value to serialize.
+                * @returns {boolean}
+                */
+            }, {
+               key: 'setSync',
+               value: function setSync(key, value) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -208,7 +267,7 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
 
                   storage.setItem(mainKey, serializer.stringify(store));
 
-                  return _Promise.resolve(true);
+                  return true;
                }
 
                /**
@@ -220,13 +279,25 @@ $__System.register('2', ['3', '4', '5'], function (_export) {
             }, {
                key: 'setStore',
                value: function setStore(store) {
+                  return _Promise.resolve(this.setStoreSync(store));
+               }
+
+               /**
+                * Sets an entire object to be serialized under `mainKey`.
+                *
+                * @param {*}  store - entire object store.
+                * @returns {boolean}
+                */
+            }, {
+               key: 'setStoreSync',
+               value: function setStoreSync(store) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
 
                   storage.setItem(mainKey, serializer.stringify(store));
 
-                  return _Promise.resolve(true);
+                  return true;
                }
             }]);
 
@@ -3191,9 +3262,20 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
             _createClass(MultiStorage, [{
                key: 'clear',
                value: function clear() {
+                  return _Promise.resolve(this.clearSync());
+               }
+
+               /**
+                * Clears all entries associated with `mainKey`.
+                *
+                * @returns {boolean}
+                */
+            }, {
+               key: 'clearSync',
+               value: function clearSync() {
                   var storage = this._params.storage;
                   storage.removeItem(this.mainKey);
-                  return _Promise.resolve(true);
+                  return true;
                }
 
                /**
@@ -3205,6 +3287,18 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
             }, {
                key: 'delete',
                value: function _delete(key) {
+                  return _Promise.resolve(this.deleteSync(key));
+               }
+
+               /**
+                * Deletes entry filed under `key` in `mainKey` hash.
+                *
+                * @param {string}   key - Key to delete.
+                * @returns {boolean}
+                */
+            }, {
+               key: 'deleteSync',
+               value: function deleteSync(key) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -3215,7 +3309,7 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
                      delete store[key];
                      storage.setItem(mainKey, serializer.stringify(store));
                   }
-                  return _Promise.resolve(true);
+                  return true;
                }
 
                /**
@@ -3227,6 +3321,18 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
             }, {
                key: 'get',
                value: function get(key) {
+                  return _Promise.resolve(this.getSync(key));
+               }
+
+               /**
+                * Returns the value associated with `key` in `mainKey` hash.
+                *
+                * @param {string}   key - Key to retrieve a value for.
+                * @returns {*}
+                */
+            }, {
+               key: 'getSync',
+               value: function getSync(key) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -3239,7 +3345,7 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
                      returnValue = store[key];
                   }
 
-                  return _Promise.resolve(returnValue);
+                  return returnValue;
                }
 
                /**
@@ -3250,6 +3356,17 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
             }, {
                key: 'getStore',
                value: function getStore() {
+                  return _Promise.resolve(this.getStoreSync());
+               }
+
+               /**
+                * Returns the entire JSON object stored by `mainKey`.
+                *
+                * @returns {*}
+                */
+            }, {
+               key: 'getStoreSync',
+               value: function getStoreSync() {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -3274,6 +3391,19 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
             }, {
                key: 'set',
                value: function set(key, value) {
+                  return _Promise.resolve(this.setSync(key, value));
+               }
+
+               /**
+                * Sets a value by the give key in the `mainKey` hash.
+                *
+                * @param {string}   key - Key for indexed storage.
+                * @param {*}        value - Any valid value to serialize.
+                * @returns {boolean}
+                */
+            }, {
+               key: 'setSync',
+               value: function setSync(key, value) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -3286,9 +3416,9 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
                   try {
                      var jsonObject = serializer.stringify(store);
                      storage.setItem(mainKey, jsonObject);
-                     return _Promise.resolve(true);
+                     return true;
                   } catch (err) {
-                     return _Promise.resolve(false);
+                     return false;
                   }
                }
 
@@ -3301,6 +3431,18 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
             }, {
                key: 'setStore',
                value: function setStore(store) {
+                  return _Promise.resolve(this.setStoreSync(store));
+               }
+
+               /**
+                * Sets an entire object to be serialized under `mainKey`.
+                *
+                * @param {*}  store - entire object store.
+                * @returns {boolean}
+                */
+            }, {
+               key: 'setStoreSync',
+               value: function setStoreSync(store) {
                   var mainKey = this.mainKey;
                   var serializer = this.serializer;
                   var storage = this._params.storage;
@@ -3308,9 +3450,9 @@ $__System.register('56', ['3', '4', '5', '45', '55'], function (_export) {
                   try {
                      var jsonObject = serializer.stringify(store);
                      storage.setItem(mainKey, jsonObject);
-                     return _Promise.resolve(true);
+                     return true;
                   } catch (err) {
-                     return _Promise.resolve(false);
+                     return false;
                   }
                }
             }]);
