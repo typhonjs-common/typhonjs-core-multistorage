@@ -354,6 +354,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#clearsync",
+    "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-clearSync",
+    "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#clearSync",
+    "method"
+  ],
+  [
     "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#constructor",
     "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-constructor-constructor",
     "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#constructor",
@@ -366,6 +372,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#deletesync",
+    "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-deleteSync",
+    "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#deleteSync",
+    "method"
+  ],
+  [
     "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#get",
     "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-get",
     "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#get",
@@ -375,6 +387,18 @@ window.esdocSearchIndex = [
     "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#getstore",
     "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-getStore",
     "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#getStore",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#getstoresync",
+    "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-getStoreSync",
+    "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#getStoreSync",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#getsync",
+    "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-getSync",
+    "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#getSync",
     "method"
   ],
   [
@@ -402,6 +426,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#setstoresync",
+    "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-setStoreSync",
+    "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#setStoreSync",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#setsync",
+    "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-method-setSync",
+    "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#setSync",
+    "method"
+  ],
+  [
     "typhonjs-core-multistorage/src/platforms/browser/multistorage.js~multistorage#storagetype",
     "class/typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage.html#instance-get-storageType",
     "typhonjs-core-multistorage/src/platforms/browser/MultiStorage.js~MultiStorage#storageType",
@@ -426,6 +462,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#clearsync",
+    "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-clearSync",
+    "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#clearSync",
+    "method"
+  ],
+  [
     "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#constructor",
     "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-constructor-constructor",
     "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#constructor",
@@ -438,6 +480,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#deletesync",
+    "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-deleteSync",
+    "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#deleteSync",
+    "method"
+  ],
+  [
     "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#get",
     "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-get",
     "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#get",
@@ -447,6 +495,18 @@ window.esdocSearchIndex = [
     "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#getstore",
     "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-getStore",
     "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#getStore",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#getstoresync",
+    "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-getStoreSync",
+    "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#getStoreSync",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#getsync",
+    "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-getSync",
+    "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#getSync",
     "method"
   ],
   [
@@ -471,6 +531,18 @@ window.esdocSearchIndex = [
     "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#setstore",
     "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-setStore",
     "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#setStore",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#setstoresync",
+    "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-setStoreSync",
+    "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#setStoreSync",
+    "method"
+  ],
+  [
+    "typhonjs-core-multistorage/src/platforms/node/multistorage.js~multistorage#setsync",
+    "class/typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage.html#instance-method-setSync",
+    "typhonjs-core-multistorage/src/platforms/node/MultiStorage.js~MultiStorage#setSync",
     "method"
   ],
   [
