@@ -24,4 +24,4 @@ else
    throw new Error('Unknown runtime.');
 }
 
-module.exports = MultiStorage;
+module.exports = MultiStorage.default ? MultiStorage.default : MultiStorage;

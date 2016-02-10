@@ -1,6 +1,6 @@
-import LocalStorage from './LocalStorage.js';
-
 'use strict';
+
+import LocalStorage from './LocalStorage.js';
 
 /**
  * Provides long or short term storage via node-localstorage or an in memory Map.
