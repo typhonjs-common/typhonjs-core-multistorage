@@ -191,7 +191,7 @@ export default class MultiStorage
          returnValue = serializer.parse(storeJSON);
       }
 
-      return Promise.resolve(returnValue);
+      return returnValue;
    }
 
    /**
