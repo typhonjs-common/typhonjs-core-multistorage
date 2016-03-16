@@ -10,7 +10,7 @@
          "src": "src/platforms/browser/MultiStorage.js",
          "builderOptions":
          {
-            "globalName": "BackboneQuery"
+            "globalName": "MultiStorage"
          }
       },
 
@@ -23,7 +23,7 @@
          "src": "src/platforms/browser/MultiStorage.js",
          "builderOptions":
          {
-            "globalName": "BackboneQuery"
+            "globalName": "MultiStorage"
          }
       },
 
@@ -76,7 +76,7 @@
          },
          "builderOptions":
          {
-            "globalName": "BackboneQuery"
+            "globalName": "MultiStorage"
          }
       },
 
@@ -97,7 +97,7 @@
          },
          "builderOptions":
          {
-            "globalName": "BackboneQuery"
+            "globalName": "MultiStorage"
          }
       }
    ]

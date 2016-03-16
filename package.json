@@ -1,12 +1,15 @@
 {
   "name": "typhonjs-core-multistorage",
   "version": "0.1.0",
-  "homepage": "https://github.com/typhonjs/typhonjs-core-multistorage/",
-  "description": "Provides basic platform dependent storage.",
-  "license": "MIT",
+  "homepage": "https://github.com/typhonjs-common/typhonjs-core-multistorage/",
+  "description": "Provides basic platform independent storage.",
+  "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/typhonjs/typhonjs-core-multistorage/typhonjs-core-multistorage.git"
+    "url": "https://github.com/typhonjs-common/typhonjs-core-multistorage/typhonjs-core-multistorage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/typhonjs-common/typhonjs-core-multistorage/issues"
   },
   "jspm": {
     "main": false,
@@ -18,17 +21,14 @@
     }
   },
   "devDependencies": {
-    "codecov.io": "^0.1.6",
-    "fs-extra": "^0.26.5",
-    "gulp": "^3.9.0",
-    "isparta": "^4.0.0",
-    "jspm": "^0.16.25",
-    "mocha": "^2.4.4",
-    "power-assert": "^1.2.0",
-    "typhonjs-config-eslint": "^0.2.1",
-    "typhonjs-core-gulptasks": "^0.5.0"
+    "gulp": "^3.0.0",
+    "jspm": "^0.16.0",
+    "typhonjs-config-eslint": "^0.4.0",
+    "typhonjs-core-gulptasks": "^0.6.0",
+    "typhonjs-npm-build-test": "^0.1.0"
   },
   "scripts": {
-    "test-bundle-node": "node ./script/test-bundle-node.js"
+    "test": "babel-node ./node_modules/typhonjs-npm-scripts-test-mocha/scripts/mocha.js",
+    "test-coverage": "babel-node ./node_modules/typhonjs-npm-scripts-test-mocha/scripts/mocha-istanbul-report.js"
   }
 }

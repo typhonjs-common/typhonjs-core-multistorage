@@ -11,15 +11,19 @@
 var MultiStorage;
 
 // Load the appropriate MultiStorage version if running in the browser or in Node.
+/* istanbul ignore if */
 if (typeof self === 'object' && self.self === self)
 {
+   /* istanbul ignore next */
    MultiStorage = require('../browser/MultiStorage.js');
 }
 else if (typeof global === 'object' && global.global === global)
 {
    MultiStorage = require('../node/MultiStorage.js');
 }
-else
+
+/* istanbul ignore if */
+if (typeof MultiStorage === 'undefined')
 {
    throw new Error('Unknown runtime.');
 }

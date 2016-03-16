@@ -36,6 +36,7 @@ export default class MultiStorage
     */
    constructor(mainKey = 'multistorage', session = false, serializer = JSON)
    {
+      /* istanbul ignore if */
       if (typeof mainKey === 'object')
       {
          const options = {};
@@ -66,6 +67,7 @@ export default class MultiStorage
          };
       }
 
+      /* istanbul ignore if */
       if (!s_STORAGE_AVAILABLE(this._params.storage))
       {
          throw new Error(`Storage type '${this.storageType} not available.`);
@@ -224,6 +226,7 @@ export default class MultiStorage
       serializer.stringify(value);
       store[key] = value;
 
+      /* istanbul ignore next */
       try
       {
          const jsonObject = serializer.stringify(store);
@@ -259,6 +262,7 @@ export default class MultiStorage
       const serializer = this.serializer;
       const storage = this._params.storage;
 
+      /* istanbul ignore next */
       try
       {
          const jsonObject = serializer.stringify(store);
@@ -294,6 +298,7 @@ class InMemoryStorage
  */
 const s_STORAGE_AVAILABLE = (storage) =>
 {
+   /* istanbul ignore next */
    try
    {
       const x = '__storage_test__';
