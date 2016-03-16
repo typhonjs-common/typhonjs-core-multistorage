@@ -306,7 +306,7 @@ const s_STORAGE_AVAILABLE = (storage) =>
       storage.removeItem(x);
       return true;
    }
-   catch(err)
+   catch (err)
    {
       return false;
    }

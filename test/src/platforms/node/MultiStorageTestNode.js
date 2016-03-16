@@ -1,5 +1,4 @@
 import { assert }                from 'chai';
-import fs                        from 'fs-extra';
 import jspm                      from 'jspm';
 
 import instrumentIstanbulSystem  from 'typhonjs-istanbul-instrument-jspm';
@@ -24,7 +23,6 @@ describe('MultiStorage Test (Node)', () =>
 {
    let MultiStorage;
 
-   // Empty coverage directory
    before(() =>
    {
       return System.import('src/platforms/node/MultiStorage.js').then((module) =>
@@ -80,7 +78,7 @@ describe('MultiStorage Test (Node)', () =>
          assert(value === undefined);
          done();
       })
-      .catch ((err) =>
+      .catch((err) =>
       {
          done(err);
       });
